@@ -63,6 +63,8 @@ ul.plain li:last-child{border-bottom:0}
 a.go{display:block; margin-top:12px; padding:16px 18px; border-radius:14px;
   background:var(--ink); color:#fff; font-weight:600; font-size:16px;
   text-align:center; text-decoration:none}
+.again2{display:block; text-align:center; margin-top:12px; color:var(--mid);
+  font-size:15px; text-decoration:underline}
 .again{display:block; width:100%; margin-top:9px; padding:12px; border:0;
   background:none; color:var(--mid); font-family:inherit; font-size:14px;
   cursor:pointer; text-decoration:underline}
@@ -93,11 +95,14 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
 
   <div class="card">
     <div class="who">
-      <div class="dot">ИИ</div>
-      <div><b>Разбор задачи</b><span>двадцать секунд, три вопроса</span></div>
+      <div class="dot">Г</div>
+      <div><b>Гоша</b><span>мой ИИ-агент — отвечает сам, прямо сейчас</span></div>
     </div>
-    <div class="chat" id="chat"></div>
-    <div class="opts" id="opts"></div>
+    <p>Спросите его про свою задачу: стоит ли отдавать её машине, с чего начать
+      и сколько это займёт. Он отвечает по моему критерию и умеет говорить «нет» —
+      половину задач отдавать ИИ не нужно.</p>
+    <a class="go" href="https://t.me/Sprosi_joru_bot">Спросить Гошу в Telegram</a>
+    <a class="again2" href="https://t.me/VictoriyaDenisova">или напишите мне лично</a>
   </div>
 
   <div class="card">
@@ -128,117 +133,5 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
   <footer>victoriadenisova.github.io</footer>
 </div>
 
-<script>
-var TG = "https://t.me/VictoriyaDenisova";
-var chat = document.getElementById("chat");
-var opts = document.getElementById("opts");
-var picked = {};
-
-var TOPICS = {
-  otchet: {label:"Отчёты, цифры, таблицы",
-    said:"Отчёты и цифры",
-    bot:"Знакомо. Виктория три года собирала отчёты руками, пока не отдала это агенту — теперь недельный отчёт приходит ей сам, и однажды он поспорил с её мнением. Оказался прав."},
-  content:{label:"Контент и соцсети",
-    said:"Контент и соцсети",
-    bot:"Это как раз то, что у неё уже работает: тексты, видео и замеры конкурентов ведут агенты. Человек решает, что говорить; машина — как и когда."},
-  zayavki:{label:"Входящие заявки и переписка",
-    said:"Заявки и переписка",
-    bot:"Самое частое место, где теряются деньги. Первичный разбор и ответы на повторяющиеся вопросы машина держит хорошо — а решение оставляет вам."},
-  ludi: {label:"Люди: команда, делегирование",
-    said:"Люди и команда",
-    bot:"Честно: это не к ИИ. Где всё держится на доверии и разговоре, машина только мешает. Зато сюда идёт её пятнадцатилетний опыт управления."}
-};
-var HOURS = {
-  a:{label:"До двух часов в неделю", said:"до 2 часов",
-     tail:"Немного — но такие задачи и отдают первыми: их не жалко, а привычка считать появляется сразу."},
-  b:{label:"Два–пять часов", said:"2–5 часов",
-     tail:"Это уже полноценный рабочий день в месяц. Обычно окупается на первой же задаче."},
-  c:{label:"Больше пяти часов", said:"больше 5 часов",
-     tail:"Больше пяти часов в неделю — это шестьдесят рабочих дней в год. Начинать надо именно отсюда."}
-};
-
-function bot(text, then){
-  var t = document.createElement("div");
-  t.className = "msg bot";
-  t.innerHTML = "<span class='typing'><i></i><i></i><i></i></span>";
-  chat.appendChild(t);
-  setTimeout(function(){
-    t.textContent = text;
-    if (then) setTimeout(then, 420);
-  }, 620);
-}
-function me(text){
-  var d = document.createElement("div");
-  d.className = "msg me";
-  d.textContent = text;
-  chat.appendChild(d);
-}
-function choices(list){
-  opts.innerHTML = "";
-  list.forEach(function(it){
-    var b = document.createElement("button");
-    b.className = "opt";
-    b.type = "button";
-    b.textContent = it.label;
-    b.onclick = it.go;
-    opts.appendChild(b);
-  });
-}
-function clearOpts(){ opts.innerHTML = ""; }
-
-function step1(){
-  bot("Здравствуйте. Сразу честно: я не живая нейросеть, у меня заготовленный разбор. Живые агенты работают у Виктории внутри — меня она поставила на дверь.", function(){
-    bot("Зато разбор настоящий, её собственный. Двадцать секунд.", function(){
-    bot("Что у вас съедает больше всего времени?", function(){
-      choices(Object.keys(TOPICS).map(function(k){
-        return {label: TOPICS[k].label, go: function(){ pickTopic(k); }};
-      }));
-      });
-    });
-  });
-}
-function pickTopic(k){
-  clearOpts();
-  picked.topic = k;
-  me(TOPICS[k].said);
-  bot(TOPICS[k].bot, function(){
-    bot("Сколько часов в неделю это занимает?", function(){
-      choices(Object.keys(HOURS).map(function(h){
-        return {label: HOURS[h].label, go: function(){ pickHours(h); }};
-      }));
-    });
-  });
-}
-function pickHours(h){
-  clearOpts();
-  picked.hours = h;
-  me(HOURS[h].said);
-  bot(HOURS[h].tail, function(){
-    var last = picked.topic === "ludi"
-      ? "Про людей Виктория говорит сама — без машины. Напишите ей, она посмотрит вашу ситуацию и скажет прямо."
-      : "Дальше нужен человек: решить, что именно отдать машине и в каком порядке. Это и есть её работа.";
-    bot(last, finish);
-  });
-}
-function finish(){
-  var msg = "Виктория, здравствуйте! Прошла разбор у вашего агента. Больше всего времени съедает: "
-    + TOPICS[picked.topic].said.toLowerCase()
-    + ", примерно " + HOURS[picked.hours].said + " в неделю.";
-  opts.innerHTML = "";
-  var a = document.createElement("a");
-  a.className = "go";
-  a.href = TG + "?text=" + encodeURIComponent(msg);
-  a.textContent = "Отправить это Виктории";
-  opts.appendChild(a);
-  var again = document.createElement("button");
-  again.className = "again";
-  again.type = "button";
-  again.textContent = "пройти заново";
-  again.onclick = function(){ chat.innerHTML = ""; opts.innerHTML = ""; picked = {}; step1(); };
-  opts.appendChild(again);
-}
-
-step1();
-</script>
 </body>
 </html>
