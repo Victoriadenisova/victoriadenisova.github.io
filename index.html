@@ -94,7 +94,7 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
   <div class="card">
     <div class="who">
       <div class="dot">ИИ</div>
-      <div><b>Агент Виктории</b><span>разберёт вашу задачу за двадцать секунд</span></div>
+      <div><b>Разбор задачи</b><span>двадцать секунд, три вопроса</span></div>
     </div>
     <div class="chat" id="chat"></div>
     <div class="opts" id="opts"></div>
@@ -187,11 +187,13 @@ function choices(list){
 function clearOpts(){ opts.innerHTML = ""; }
 
 function step1(){
-  bot("Здравствуйте. Я один из восьми агентов, которые работают на Викторию. Давайте за двадцать секунд посмотрим вашу задачу.", function(){
+  bot("Здравствуйте. Сразу честно: я не живая нейросеть, у меня заготовленный разбор. Живые агенты работают у Виктории внутри — меня она поставила на дверь.", function(){
+    bot("Зато разбор настоящий, её собственный. Двадцать секунд.", function(){
     bot("Что у вас съедает больше всего времени?", function(){
       choices(Object.keys(TOPICS).map(function(k){
         return {label: TOPICS[k].label, go: function(){ pickTopic(k); }};
       }));
+      });
     });
   });
 }
