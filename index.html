@@ -12,8 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F7F6F3; --card:#FFFFFF; --ink:#16161A; --mid:#5E5E58;
-  --line:#E4E2DC; --soft:#F1EFEA; --me:#16161A;
+  --bg:#F3EDE5; --card:#FFFFFF; --ink:#1C1713; --mid:#6B6259;
+  --line:#E4DACD; --soft:#F6F0E8; --red:#BC2A1E; --red-d:#9C2116;
+  --sand:#E9E2D8;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -23,11 +24,18 @@ body{background:var(--bg); color:var(--ink);
 .wrap{max-width:680px; margin:0 auto; padding:16px 16px 56px}
 .card{background:var(--card); border:1px solid var(--line); border-radius:22px;
   padding:28px 22px; margin-top:16px}
+.hero{background:linear-gradient(150deg,#BC2A1E 0%,#8E1C13 100%); border:0; color:#fff;
+  padding:34px 24px 30px}
+.hero h1{color:#fff}
+.hero .role{color:#F3C9C2}
+.hero .lead{color:#fff}
+.hero p{color:#F6DED9}
+.rule{width:44px; height:3px; background:#F3C9C2; border-radius:2px; margin:0 0 18px}
 h1{font-size:29px; line-height:1.14; margin:0 0 5px; letter-spacing:-.01em}
 .role{color:var(--mid); font-size:15px; margin:0 0 18px}
 .lead{font-weight:600; font-size:17px; margin:0 0 12px}
 p{margin:0 0 14px}
-h2{font-size:13px; letter-spacing:.09em; text-transform:uppercase; color:var(--mid);
+h2{font-size:13px; letter-spacing:.09em; text-transform:uppercase; color:var(--red);
   font-weight:600; margin:0 0 14px}
 ul.plain{margin:0; padding:0; list-style:none}
 ul.plain li{padding:9px 0; border-bottom:1px solid var(--line)}
@@ -38,7 +46,7 @@ ul.plain li:last-child{border-bottom:0}
 /* чат */
 .chat{min-height:150px}
 .who{display:flex; align-items:center; gap:10px; margin-bottom:16px}
-.dot{width:38px; height:38px; border-radius:50%; background:var(--ink); color:#fff;
+.dot{width:38px; height:38px; border-radius:50%; background:var(--red); color:#fff;
   display:flex; align-items:center; justify-content:center; font-size:15px;
   font-weight:700; flex:0 0 38px}
 .who b{display:block; font-size:15px; line-height:1.2}
@@ -61,9 +69,9 @@ ul.plain li:last-child{border-bottom:0}
   color:var(--ink); cursor:pointer; line-height:1.35}
 .opt:active{background:var(--soft)}
 a.go{display:block; margin-top:12px; padding:16px 18px; border-radius:14px;
-  background:var(--ink); color:#fff; font-weight:600; font-size:16px;
+  background:var(--red); color:#fff; font-weight:600; font-size:16px;
   text-align:center; text-decoration:none}
-.again2{display:block; text-align:center; margin-top:12px; color:var(--mid);
+.again2{display:block; text-align:center; margin-top:12px; color:var(--red);
   font-size:15px; text-decoration:underline}
 .again{display:block; width:100%; margin-top:9px; padding:12px; border:0;
   background:none; color:var(--mid); font-family:inherit; font-size:14px;
@@ -72,8 +80,8 @@ a.go{display:block; margin-top:12px; padding:16px 18px; border-radius:14px;
 .links{display:flex; flex-direction:column; gap:10px; margin-top:16px}
 a.btn{display:block; text-align:center; text-decoration:none; padding:15px 18px;
   border-radius:14px; font-weight:600; font-size:16px}
-a.tg{background:var(--ink); color:#fff}
-a.ig{background:transparent; color:var(--ink); border:1px solid var(--line)}
+a.tg{background:var(--red); color:#fff}
+a.ig{background:var(--sand); color:var(--ink); border:0}
 footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
 @media (max-width:420px){
   .card{padding:24px 18px; border-radius:18px}
@@ -84,9 +92,10 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
 <body>
 <div class="wrap">
 
-  <div class="card">
+  <div class="card hero">
     <h1>Виктория Денисова</h1>
     <p class="role">управленец · архитектура управления с ИИ</p>
+    <div class="rule"></div>
     <p class="lead">Управленец с пятнадцатилетним опытом. Кандидат экономических наук,
       коуч ICF, бизнес-тренер на программах MBA.</p>
     <p>Выстраиваю архитектуру управления в компаниях — часть работы в ней держат
