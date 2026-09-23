@@ -13,7 +13,7 @@
 <style>
 :root{
   --bg:#F6EFE8; --card:#FFFFFF; --ink:#1C1713; --mid:#6B6259;
-  --line:#E8DCD2; --soft:#F8F1EA; --red:#C2664B; --red-d:#9B4A33;
+  --line:#E8DCD2; --soft:#F8F1EA; --red:#B4503A; --red-d:#8A3520;
   --sand:#EFE3DA;
 }
 *{box-sizing:border-box}
@@ -24,16 +24,16 @@ body{background:var(--bg); color:var(--ink);
 .wrap{max-width:680px; margin:0 auto; padding:16px 16px 56px}
 .card{background:var(--card); border:1px solid var(--line); border-radius:22px;
   padding:28px 22px; margin-top:16px}
-.hero{background:linear-gradient(150deg,#C2664B 0%,#9B4A33 100%); border:0; color:#fff;
+.hero{background:var(--card); border:1px solid var(--line); color:var(--ink);
   padding:34px 24px 30px}
-.hero h1{color:#fff}
-.hero .role{color:#F7DCCF}
-.hero .lead{color:#fff}
-.hero p{color:#F8E4DA}
-.hero .bio{font-size:17px; line-height:1.6; color:#fff; margin:0 0 14px}
-.hero .bio a{color:#F7DCCF; text-decoration:underline}
-.hero .tail{color:#F6DED2; font-size:15px; margin:0}
-.rule{width:44px; height:3px; background:#F7DCCF; border-radius:2px; margin:0 0 18px}
+.hero h1{color:var(--ink)}
+.hero .role{color:var(--mid)}
+.hero .lead{color:var(--ink)}
+.hero p{color:var(--ink)}
+.hero .bio{font-size:17px; line-height:1.6; color:var(--ink); margin:0 0 14px}
+.hero .bio a{color:var(--red); text-decoration:underline}
+.hero .tail{color:var(--mid); font-size:15px; margin:0}
+.rule{width:44px; height:3px; background:var(--red); border-radius:2px; margin:0 0 18px}
 h1{font-size:29px; line-height:1.14; margin:0 0 5px; letter-spacing:-.01em}
 .role{color:var(--mid); font-size:15px; margin:0 0 18px}
 .lead{font-weight:600; font-size:17px; margin:0 0 12px}
@@ -105,7 +105,7 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
 
 .top{display:flex; align-items:center; gap:16px; margin:0 0 20px}
 .top img{width:104px; height:104px; border-radius:50%; object-fit:cover;
-  border:2px solid rgba(255,255,255,.55); flex:0 0 104px}
+  border:2px solid var(--line); flex:0 0 104px}
 .top h1{margin:0 0 4px}
 .top .role{margin:0}
 @media (max-width:360px){
