@@ -6,59 +6,76 @@
 <title>Виктория Денисова</title>
 <meta name="description" content="Управленец. Выстраиваю архитектуру управления в компаниях — часть работы в ней держат ИИ-агенты.">
 <meta property="og:title" content="Виктория Денисова">
-<meta property="og:description" content="Напишите задачу — отвечу, стоит ли отдавать её ИИ.">
+<meta property="og:description" content="Поговорите с одним из моих агентов — он разберёт вашу задачу за двадцать секунд.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F7F6F3; --card:#FFFFFF; --ink:#16161A; --mid:#5E5E58;
-  --line:#E4E2DC; --soft:#F1EFEA;
+  --line:#E4E2DC; --soft:#F1EFEA; --me:#16161A;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{background:var(--bg); color:var(--ink);
   font-family:"Golos Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased}
-.wrap{max-width:680px; margin:0 auto; padding:16px 16px 60px}
+.wrap{max-width:680px; margin:0 auto; padding:16px 16px 56px}
 .card{background:var(--card); border:1px solid var(--line); border-radius:22px;
-  padding:32px 26px; margin-top:16px}
-h1{font-size:30px; line-height:1.14; margin:0 0 6px; letter-spacing:-.01em}
-.role{color:var(--mid); font-size:16px; margin:0 0 22px}
-.lead{font-weight:600; font-size:18px; margin:0 0 14px}
-p{margin:0 0 15px}
+  padding:28px 22px; margin-top:16px}
+h1{font-size:29px; line-height:1.14; margin:0 0 5px; letter-spacing:-.01em}
+.role{color:var(--mid); font-size:15px; margin:0 0 18px}
+.lead{font-weight:600; font-size:17px; margin:0 0 12px}
+p{margin:0 0 14px}
 h2{font-size:13px; letter-spacing:.09em; text-transform:uppercase; color:var(--mid);
   font-weight:600; margin:0 0 14px}
-.big{font-size:23px; font-weight:700; line-height:1.2; margin:0 0 8px}
-.sub{color:var(--mid); font-size:15px; margin:0 0 16px}
 ul.plain{margin:0; padding:0; list-style:none}
 ul.plain li{padding:9px 0; border-bottom:1px solid var(--line)}
 ul.plain li:last-child{border-bottom:0}
-.block{margin:0 0 16px}
+.block{margin:0 0 15px}
 .block b{display:block; margin-bottom:3px}
 
-textarea{width:100%; min-height:104px; resize:vertical; padding:15px 16px;
-  border:1px solid var(--line); border-radius:14px; background:var(--soft);
-  font-family:inherit; font-size:16px; line-height:1.45; color:var(--ink);
-  outline:none; transition:border-color .15s, background .15s}
-textarea:focus{background:#fff; border-color:var(--ink)}
-textarea::placeholder{color:#A4A099}
-.go{display:block; width:100%; margin-top:12px; padding:16px 18px; border:0;
-  border-radius:14px; background:var(--ink); color:#fff; font-weight:600;
-  font-size:16px; font-family:inherit; cursor:pointer; text-align:center;
-  text-decoration:none}
-.go[disabled]{background:#C9C6BE; cursor:default}
-.note{font-size:13px; color:var(--mid); margin:10px 0 0}
+/* чат */
+.chat{min-height:150px}
+.who{display:flex; align-items:center; gap:10px; margin-bottom:16px}
+.dot{width:38px; height:38px; border-radius:50%; background:var(--ink); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:15px;
+  font-weight:700; flex:0 0 38px}
+.who b{display:block; font-size:15px; line-height:1.2}
+.who span{display:block; font-size:13px; color:var(--mid)}
+.msg{max-width:88%; padding:12px 15px; border-radius:17px; margin-bottom:9px;
+  font-size:16px; line-height:1.45; animation:in .28s ease both}
+.msg.bot{background:var(--soft); border-bottom-left-radius:6px}
+.msg.me{background:var(--me); color:#fff; margin-left:auto;
+  border-bottom-right-radius:6px}
+@keyframes in{from{opacity:0; transform:translateY(7px)}to{opacity:1; transform:none}}
+.typing{display:inline-flex; gap:4px; align-items:center; padding:3px 0}
+.typing i{width:6px; height:6px; border-radius:50%; background:#B4B1A9;
+  animation:blink 1.1s infinite}
+.typing i:nth-child(2){animation-delay:.18s}
+.typing i:nth-child(3){animation-delay:.36s}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.opts{margin-top:12px; display:flex; flex-direction:column; gap:8px}
+.opt{padding:13px 15px; border:1px solid var(--line); border-radius:13px;
+  background:#fff; font-family:inherit; font-size:16px; text-align:left;
+  color:var(--ink); cursor:pointer; line-height:1.35}
+.opt:active{background:var(--soft)}
+a.go{display:block; margin-top:12px; padding:16px 18px; border-radius:14px;
+  background:var(--ink); color:#fff; font-weight:600; font-size:16px;
+  text-align:center; text-decoration:none}
+.again{display:block; width:100%; margin-top:9px; padding:12px; border:0;
+  background:none; color:var(--mid); font-family:inherit; font-size:14px;
+  cursor:pointer; text-decoration:underline}
 
-.links{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.links{display:flex; flex-direction:column; gap:10px; margin-top:16px}
 a.btn{display:block; text-align:center; text-decoration:none; padding:15px 18px;
   border-radius:14px; font-weight:600; font-size:16px}
 a.tg{background:var(--ink); color:#fff}
 a.ig{background:transparent; color:var(--ink); border:1px solid var(--line)}
 footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
 @media (max-width:420px){
-  .card{padding:26px 18px; border-radius:18px}
-  h1{font-size:26px}
+  .card{padding:24px 18px; border-radius:18px}
+  h1{font-size:25px}
 }
 </style>
 </head>
@@ -71,19 +88,16 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
     <p class="lead">Управленец с пятнадцатилетним опытом. Кандидат экономических наук,
       коуч ICF, бизнес-тренер на программах MBA.</p>
     <p>Выстраиваю архитектуру управления в компаниях — часть работы в ней держат
-      ИИ-агенты. На меня работают восемь: маркетинг, аналитика, отчётность, задачи.
-      Отчёты приходят сами, решения принимаются на цифрах, а не на ощущениях.
-      Всё, что предлагаю, сначала проверяю на себе.</p>
+      ИИ-агенты. На меня работают восемь. Всё, что предлагаю, сначала проверяю на себе.</p>
   </div>
 
   <div class="card">
-    <p class="big">Какую задачу вы бы отдали ИИ?</p>
-    <p class="sub">Напишите одной строкой — отвечу честно, стоит ли её отдавать
-      и с чего начать.</p>
-    <textarea id="task" placeholder="Например: каждую неделю вручную собираю отчёт по продажам из трёх таблиц"></textarea>
-    <a class="go" id="send" href="#" rel="noopener">Отправить Виктории в Telegram</a>
-    <p class="note">Откроется Telegram с готовым сообщением — вам останется нажать
-      «отправить».</p>
+    <div class="who">
+      <div class="dot">ИИ</div>
+      <div><b>Агент Виктории</b><span>разберёт вашу задачу за двадцать секунд</span></div>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div class="opts" id="opts"></div>
   </div>
 
   <div class="card">
@@ -102,11 +116,9 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
     <h2>Как работаю</h2>
     <div class="block"><b>Проект.</b>
       Выстраиваю архитектуру управления: кто за что отвечает, из чего складываются
-      решения, где живут данные. ИИ-агенты встают внутрь этой системы. Решаем, что
-      отдать машине, что остаётся за человеком и в каком порядке.</div>
+      решения, где живут данные. ИИ-агенты встают внутрь этой системы.</div>
     <div class="block"><b>Консультация.</b>
-      Разбираем вашу задачу — управленческую или «стоит ли вообще отдавать это ИИ».
-      Часто выясняется, что дело не в инструменте, а в том, как устроен процесс.</div>
+      Разбираем вашу задачу — управленческую или «стоит ли вообще отдавать это ИИ».</div>
     <div class="links">
       <a class="btn tg" href="https://t.me/VictoriyaDenisova">Написать в Telegram</a>
       <a class="btn ig" href="https://www.instagram.com/victoriadenisova.ai/">Instagram</a>
@@ -117,25 +129,114 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
 </div>
 
 <script>
-var ta = document.getElementById("task");
-var send = document.getElementById("send");
+var TG = "https://t.me/VictoriyaDenisova";
+var chat = document.getElementById("chat");
+var opts = document.getElementById("opts");
+var picked = {};
 
-function build(){
-  var v = ta.value.trim();
-  if (!v){
-    send.setAttribute("disabled", "disabled");
-    send.removeAttribute("href");
-    send.textContent = "Напишите задачу — и кнопка оживёт";
-    return;
-  }
-  send.removeAttribute("disabled");
-  send.textContent = "Отправить Виктории в Telegram";
-  var msg = "Виктория, здравствуйте! Задача, которую я хочу отдать ИИ: " + v;
-  send.setAttribute("href",
-    "https://t.me/VictoriyaDenisova?text=" + encodeURIComponent(msg));
+var TOPICS = {
+  otchet: {label:"Отчёты, цифры, таблицы",
+    said:"Отчёты и цифры",
+    bot:"Знакомо. Виктория три года собирала отчёты руками, пока не отдала это агенту — теперь недельный отчёт приходит ей сам, и однажды он поспорил с её мнением. Оказался прав."},
+  content:{label:"Контент и соцсети",
+    said:"Контент и соцсети",
+    bot:"Это как раз то, что у неё уже работает: тексты, видео и замеры конкурентов ведут агенты. Человек решает, что говорить; машина — как и когда."},
+  zayavki:{label:"Входящие заявки и переписка",
+    said:"Заявки и переписка",
+    bot:"Самое частое место, где теряются деньги. Первичный разбор и ответы на повторяющиеся вопросы машина держит хорошо — а решение оставляет вам."},
+  ludi: {label:"Люди: команда, делегирование",
+    said:"Люди и команда",
+    bot:"Честно: это не к ИИ. Где всё держится на доверии и разговоре, машина только мешает. Зато сюда идёт её пятнадцатилетний опыт управления."}
+};
+var HOURS = {
+  a:{label:"До двух часов в неделю", said:"до 2 часов",
+     tail:"Немного — но такие задачи и отдают первыми: их не жалко, а привычка считать появляется сразу."},
+  b:{label:"Два–пять часов", said:"2–5 часов",
+     tail:"Это уже полноценный рабочий день в месяц. Обычно окупается на первой же задаче."},
+  c:{label:"Больше пяти часов", said:"больше 5 часов",
+     tail:"Больше пяти часов в неделю — это шестьдесят рабочих дней в год. Начинать надо именно отсюда."}
+};
+
+function bot(text, then){
+  var t = document.createElement("div");
+  t.className = "msg bot";
+  t.innerHTML = "<span class='typing'><i></i><i></i><i></i></span>";
+  chat.appendChild(t);
+  setTimeout(function(){
+    t.textContent = text;
+    if (then) setTimeout(then, 420);
+  }, 620);
 }
-ta.addEventListener("input", build);
-build();
+function me(text){
+  var d = document.createElement("div");
+  d.className = "msg me";
+  d.textContent = text;
+  chat.appendChild(d);
+}
+function choices(list){
+  opts.innerHTML = "";
+  list.forEach(function(it){
+    var b = document.createElement("button");
+    b.className = "opt";
+    b.type = "button";
+    b.textContent = it.label;
+    b.onclick = it.go;
+    opts.appendChild(b);
+  });
+}
+function clearOpts(){ opts.innerHTML = ""; }
+
+function step1(){
+  bot("Здравствуйте. Я один из восьми агентов, которые работают на Викторию. Давайте за двадцать секунд посмотрим вашу задачу.", function(){
+    bot("Что у вас съедает больше всего времени?", function(){
+      choices(Object.keys(TOPICS).map(function(k){
+        return {label: TOPICS[k].label, go: function(){ pickTopic(k); }};
+      }));
+    });
+  });
+}
+function pickTopic(k){
+  clearOpts();
+  picked.topic = k;
+  me(TOPICS[k].said);
+  bot(TOPICS[k].bot, function(){
+    bot("Сколько часов в неделю это занимает?", function(){
+      choices(Object.keys(HOURS).map(function(h){
+        return {label: HOURS[h].label, go: function(){ pickHours(h); }};
+      }));
+    });
+  });
+}
+function pickHours(h){
+  clearOpts();
+  picked.hours = h;
+  me(HOURS[h].said);
+  bot(HOURS[h].tail, function(){
+    var last = picked.topic === "ludi"
+      ? "Про людей Виктория говорит сама — без машины. Напишите ей, она посмотрит вашу ситуацию и скажет прямо."
+      : "Дальше нужен человек: решить, что именно отдать машине и в каком порядке. Это и есть её работа.";
+    bot(last, finish);
+  });
+}
+function finish(){
+  var msg = "Виктория, здравствуйте! Прошла разбор у вашего агента. Больше всего времени съедает: "
+    + TOPICS[picked.topic].said.toLowerCase()
+    + ", примерно " + HOURS[picked.hours].said + " в неделю.";
+  opts.innerHTML = "";
+  var a = document.createElement("a");
+  a.className = "go";
+  a.href = TG + "?text=" + encodeURIComponent(msg);
+  a.textContent = "Отправить это Виктории";
+  opts.appendChild(a);
+  var again = document.createElement("button");
+  again.className = "again";
+  again.type = "button";
+  again.textContent = "пройти заново";
+  again.onclick = function(){ chat.innerHTML = ""; opts.innerHTML = ""; picked = {}; step1(); };
+  opts.appendChild(again);
+}
+
+step1();
 </script>
 </body>
 </html>
