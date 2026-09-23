@@ -51,6 +51,10 @@ ul.plain li:last-child{border-bottom:0}
   border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg)}
 .q span{font-size:16px; line-height:1.4}
 .stopnote{font-size:13px; color:var(--mid); margin:16px 0 8px}
+.go{display:block; width:100%; margin-top:16px; padding:15px 18px; border:0;
+  border-radius:14px; background:var(--ink); color:#fff; font-weight:600;
+  font-size:16px; font-family:inherit; cursor:pointer}
+.go:disabled{background:#C9C6BE; cursor:default}
 .result{margin-top:18px; padding:18px; border-radius:16px; background:var(--soft);
   display:none}
 .result.show{display:block}
@@ -112,6 +116,8 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
       <div class="q" data-k="n"><div class="box"></div><span>За решение отвечают перед человеком: здоровье, увольнение, чужие деньги</span></div>
       <div class="q" data-k="n"><div class="box"></div><span>Суть задачи — отношения: переговоры, доверие, мотивация</span></div>
     </div>
+
+    <button class="go" id="go" type="button">Показать разбор</button>
 
     <div class="result" id="res">
       <div class="verdict" id="verdict"></div>
@@ -183,8 +189,19 @@ AGENTS.forEach(function(a){
 var res = document.getElementById("res");
 var qs = [].slice.call(document.querySelectorAll(".q"));
 qs.forEach(function(q){
-  q.onclick = function(){ q.classList.toggle("on"); score(); };
+  q.onclick = function(){ q.classList.toggle("on"); ready(); };
 });
+
+var goBtn = document.getElementById("go");
+goBtn.onclick = score;
+
+function ready(){
+  var any = qs.some(function(q){ return q.classList.contains("on"); });
+  goBtn.disabled = !any;
+  goBtn.textContent = any ? "Показать разбор" : "Отметьте, что верно про вашу задачу";
+  res.className = "result";
+}
+ready();
 
 function score(){
   var yes = 0, stop = 0;
