@@ -102,14 +102,29 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
   border-radius:999px; padding:9px 15px; font-size:15px; line-height:1.25;
   color:var(--ink)}
 .hint{font-size:13px; color:var(--mid); margin:0}
+
+.top{display:flex; align-items:center; gap:16px; margin:0 0 20px}
+.top img{width:104px; height:104px; border-radius:50%; object-fit:cover;
+  border:2px solid rgba(255,255,255,.55); flex:0 0 104px}
+.top h1{margin:0 0 4px}
+.top .role{margin:0}
+@media (max-width:360px){
+  .top img{width:88px; height:88px; flex:0 0 88px}
+  .top h1{font-size:23px}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <div class="card hero">
-    <h1>Виктория Денисова</h1>
-    <p class="role">управленец · архитектура управления с ИИ</p>
+    <div class="top">
+      <img src="victoria.jpg" alt="Виктория Денисова">
+      <div>
+        <h1>Виктория Денисова</h1>
+        <p class="role">управленец · архитектура управления с ИИ</p>
+      </div>
+    </div>
     <div class="rule"></div>
     <p class="lead">Управленец с пятнадцатилетним опытом. Кандидат экономических наук,
       коуч ICF, бизнес-тренер на программах MBA.</p>
