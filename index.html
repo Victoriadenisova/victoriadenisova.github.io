@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Виктория Денисова</title>
-<meta name="description" content="Управленец. Выстраиваю архитектуру управления в компаниях — часть работы в ней держат ИИ-агенты. Проверьте свою задачу прямо здесь.">
+<meta name="description" content="Управленец. Выстраиваю архитектуру управления в компаниях — часть работы в ней держат ИИ-агенты.">
 <meta property="og:title" content="Виктория Денисова">
-<meta property="og:description" content="Проверьте прямо здесь, стоит ли отдавать вашу задачу ИИ.">
+<meta property="og:description" content="Напишите задачу — отвечу, стоит ли отдавать её ИИ.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F7F6F3; --card:#FFFFFF; --ink:#16161A; --mid:#5E5E58;
-  --line:#E4E2DC; --soft:#F1EFEA; --yes:#1F6B3F; --no:#8A3324;
+  --line:#E4E2DC; --soft:#F1EFEA;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -29,51 +29,26 @@ h1{font-size:30px; line-height:1.14; margin:0 0 6px; letter-spacing:-.01em}
 p{margin:0 0 15px}
 h2{font-size:13px; letter-spacing:.09em; text-transform:uppercase; color:var(--mid);
   font-weight:600; margin:0 0 14px}
-.h2big{font-size:22px; letter-spacing:0; text-transform:none; color:var(--ink);
-  font-weight:700; margin:0 0 6px; line-height:1.2}
-.sub{color:var(--mid); font-size:15px; margin:0 0 18px}
+.big{font-size:23px; font-weight:700; line-height:1.2; margin:0 0 8px}
+.sub{color:var(--mid); font-size:15px; margin:0 0 16px}
 ul.plain{margin:0; padding:0; list-style:none}
 ul.plain li{padding:9px 0; border-bottom:1px solid var(--line)}
 ul.plain li:last-child{border-bottom:0}
 .block{margin:0 0 16px}
 .block b{display:block; margin-bottom:3px}
 
-/* тест */
-.q{display:flex; gap:12px; align-items:flex-start; padding:13px 14px; margin-bottom:8px;
-  background:var(--soft); border:1px solid transparent; border-radius:13px; cursor:pointer;
-  user-select:none; transition:background .15s, border-color .15s}
-.q:active{background:#E8E5DE}
-.q.on{background:#fff; border-color:var(--ink)}
-.q .box{flex:0 0 22px; height:22px; margin-top:1px; border:2px solid #B9B6AE;
-  border-radius:7px; position:relative; transition:border-color .15s, background .15s}
-.q.on .box{background:var(--ink); border-color:var(--ink)}
-.q.on .box:after{content:""; position:absolute; left:6px; top:2px; width:5px; height:10px;
-  border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg)}
-.q span{font-size:16px; line-height:1.4}
-.stopnote{font-size:13px; color:var(--mid); margin:16px 0 8px}
-.go{display:block; width:100%; margin-top:16px; padding:15px 18px; border:0;
+textarea{width:100%; min-height:104px; resize:vertical; padding:15px 16px;
+  border:1px solid var(--line); border-radius:14px; background:var(--soft);
+  font-family:inherit; font-size:16px; line-height:1.45; color:var(--ink);
+  outline:none; transition:border-color .15s, background .15s}
+textarea:focus{background:#fff; border-color:var(--ink)}
+textarea::placeholder{color:#A4A099}
+.go{display:block; width:100%; margin-top:12px; padding:16px 18px; border:0;
   border-radius:14px; background:var(--ink); color:#fff; font-weight:600;
-  font-size:16px; font-family:inherit; cursor:pointer}
-.go:disabled{background:#C9C6BE; cursor:default}
-.result{margin-top:18px; padding:18px; border-radius:16px; background:var(--soft);
-  display:none}
-.result.show{display:block}
-.result .verdict{font-size:20px; font-weight:700; margin-bottom:8px}
-.result.yes .verdict{color:var(--yes)}
-.result.no .verdict{color:var(--no)}
-.result p{margin:0 0 10px; font-size:16px}
-.result p:last-child{margin:0}
-
-/* агенты */
-.agents{display:grid; grid-template-columns:1fr 1fr; gap:8px}
-.ag{background:var(--soft); border-radius:13px; padding:13px 14px; cursor:pointer;
-  transition:background .15s}
-.ag:active{background:#E8E5DE}
-.ag b{display:block; font-size:15px; line-height:1.25}
-.ag .what{font-size:14px; color:var(--mid); line-height:1.4; max-height:0; overflow:hidden;
-  transition:max-height .25s ease, margin .25s ease; margin-top:0}
-.ag.open .what{max-height:220px; margin-top:7px}
-.hint{font-size:13px; color:var(--mid); margin:10px 0 0}
+  font-size:16px; font-family:inherit; cursor:pointer; text-align:center;
+  text-decoration:none}
+.go[disabled]{background:#C9C6BE; cursor:default}
+.note{font-size:13px; color:var(--mid); margin:10px 0 0}
 
 .links{display:flex; flex-direction:column; gap:10px; margin-top:18px}
 a.btn{display:block; text-align:center; text-decoration:none; padding:15px 18px;
@@ -84,7 +59,6 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
 @media (max-width:420px){
   .card{padding:26px 18px; border-radius:18px}
   h1{font-size:26px}
-  .agents{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -103,35 +77,13 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
   </div>
 
   <div class="card">
-    <p class="h2big">Стоит ли отдавать вашу задачу ИИ?</p>
-    <p class="sub">Подумайте об одной конкретной задаче и отметьте, что про неё верно.
-      Это тот же разбор, с которого я начинаю на консультации.</p>
-
-    <div id="qs">
-      <div class="q" data-k="y"><div class="box"></div><span>Повторяется — каждый день или каждую неделю</span></div>
-      <div class="q" data-k="y"><div class="box"></div><span>На входе текст, цифры или файлы, на выходе понятный результат</span></div>
-      <div class="q" data-k="y"><div class="box"></div><span>Ошибку видно сразу, и она не фатальна</span></div>
-      <div class="q" data-k="y"><div class="box"></div><span>Есть накопленный материал, на котором видно, «как правильно»</span></div>
-      <p class="stopnote">А это про неё верно?</p>
-      <div class="q" data-k="n"><div class="box"></div><span>За решение отвечают перед человеком: здоровье, увольнение, чужие деньги</span></div>
-      <div class="q" data-k="n"><div class="box"></div><span>Суть задачи — отношения: переговоры, доверие, мотивация</span></div>
-    </div>
-
-    <button class="go" id="go" type="button">Показать разбор</button>
-
-    <div class="result" id="res">
-      <div class="verdict" id="verdict"></div>
-      <p id="why"></p>
-      <p id="step"></p>
-    </div>
-  </div>
-
-  <div class="card">
-    <p class="h2big">Восемь агентов, которые работают на меня</p>
-    <p class="sub">Нажмите на любого — что он делает на практике.</p>
-    <div class="agents" id="ags"></div>
-    <p class="hint">Все живут на моём сервере, общаются через общую память и
-      разговаривают со мной в Telegram.</p>
+    <p class="big">Какую задачу вы бы отдали ИИ?</p>
+    <p class="sub">Напишите одной строкой — отвечу честно, стоит ли её отдавать
+      и с чего начать.</p>
+    <textarea id="task" placeholder="Например: каждую неделю вручную собираю отчёт по продажам из трёх таблиц"></textarea>
+    <a class="go" id="send" href="#" rel="noopener">Отправить Виктории в Telegram</a>
+    <p class="note">Откроется Telegram с готовым сообщением — вам останется нажать
+      «отправить».</p>
   </div>
 
   <div class="card">
@@ -155,10 +107,8 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
     <div class="block"><b>Консультация.</b>
       Разбираем вашу задачу — управленческую или «стоит ли вообще отдавать это ИИ».
       Часто выясняется, что дело не в инструменте, а в том, как устроен процесс.</div>
-    <p>Напишите мне в Telegram, что у вас за задача — и что показал разбор выше.
-      Отвечу честно.</p>
     <div class="links">
-      <a class="btn tg" href="https://t.me/victoriadenisovacoach">Написать в Telegram</a>
+      <a class="btn tg" href="https://t.me/VictoriyaDenisova">Написать в Telegram</a>
       <a class="btn ig" href="https://www.instagram.com/victoriadenisova.ai/">Instagram</a>
     </div>
   </div>
@@ -167,73 +117,25 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
 </div>
 
 <script>
-var AGENTS = [
-  ["Стратегия и продукт", "За что готовы платить, как упаковать опыт в продукт, что запускать первым. Спорит со мной, когда я неправа."],
-  ["Маркетинг и контент", "Тексты, видео, карточки, замеры конкурентов и недельная отчётность по цифрам."],
-  ["Личный бренд и канал", "Посты и сценарии моим голосом, аналитика канала, картинки под посты."],
-  ["Память и разбор входящего", "Принимает всё, что я присылаю, разбирает до расшифровок и складывает в базу. Потом ищет по ней."],
-  ["Ежедневный работник", "Исследования с проверкой источника, документы и презентации, монтаж, задачи и напоминания."],
-  ["Разработка", "Сайт, формы, база, интеграции. Чинит по причине, а не по симптому."],
-  ["Системное администрирование", "Сервер, службы, доступы. Поднимает остальных, когда они молчат."],
-  ["Координатор", "Дробит мою задачу на части, раздаёт, собирает отчёты и говорит, что готово, а что встало."]
-];
-var box = document.getElementById("ags");
-AGENTS.forEach(function(a){
-  var d = document.createElement("div");
-  d.className = "ag";
-  d.innerHTML = "<b>" + a[0] + "</b><div class='what'>" + a[1] + "</div>";
-  d.onclick = function(){ d.classList.toggle("open"); };
-  box.appendChild(d);
-});
+var ta = document.getElementById("task");
+var send = document.getElementById("send");
 
-var res = document.getElementById("res");
-var qs = [].slice.call(document.querySelectorAll(".q"));
-qs.forEach(function(q){
-  q.onclick = function(){ q.classList.toggle("on"); ready(); };
-});
-
-var goBtn = document.getElementById("go");
-goBtn.onclick = score;
-
-function ready(){
-  var any = qs.some(function(q){ return q.classList.contains("on"); });
-  goBtn.disabled = !any;
-  goBtn.textContent = any ? "Показать разбор" : "Отметьте, что верно про вашу задачу";
-  res.className = "result";
-}
-ready();
-
-function score(){
-  var yes = 0, stop = 0;
-  qs.forEach(function(q){
-    if (!q.classList.contains("on")) return;
-    if (q.dataset.k === "y") yes++; else stop++;
-  });
-  if (yes === 0 && stop === 0){ res.className = "result"; return; }
-
-  var verdict, why, step, cls;
-  if (stop > 0){
-    cls = "no"; verdict = "Нет — это остаётся за человеком";
-    why = "Там, где отвечают перед живым человеком или всё держится на отношениях, машину ставить нельзя: цену ошибки никто не вернёт.";
-    step = "Но рядом почти всегда есть подготовка — собрать данные, черновик, историю вопроса. Вот её и отдайте.";
-  } else if (yes >= 3){
-    cls = "yes"; verdict = "Да, эту задачу можно отдавать";
-    why = "Сходится главное: повторяемость, понятный вход и выход, ошибку видно сразу.";
-    step = "Первый шаг: возьмите её за одну неделю и посчитайте, сколько часов она съела. С этой цифры и начнём.";
-  } else if (yes === 2){
-    cls = ""; verdict = "Частично";
-    why = "Половина признаков есть. Обычно это значит, что задачу стоит разрезать: часть повторяемая, часть требует решения.";
-    step = "Первый шаг: выпишите её по шагам и отметьте, на каком именно шаге вы принимаете решение.";
-  } else {
-    cls = "no"; verdict = "Скорее нет";
-    why = "Признаков мало. Разовая или непредсказуемая задача дешевле делается руками, чем автоматизируется.";
-    step = "Если она всё же болит — дело, скорее всего, не в инструменте, а в том, как устроен процесс.";
+function build(){
+  var v = ta.value.trim();
+  if (!v){
+    send.setAttribute("disabled", "disabled");
+    send.removeAttribute("href");
+    send.textContent = "Напишите задачу — и кнопка оживёт";
+    return;
   }
-  document.getElementById("verdict").textContent = verdict;
-  document.getElementById("why").textContent = why;
-  document.getElementById("step").textContent = step;
-  res.className = "result show " + cls;
+  send.removeAttribute("disabled");
+  send.textContent = "Отправить Виктории в Telegram";
+  var msg = "Виктория, здравствуйте! Задача, которую я хочу отдать ИИ: " + v;
+  send.setAttribute("href",
+    "https://t.me/VictoriyaDenisova?text=" + encodeURIComponent(msg));
 }
+ta.addEventListener("input", build);
+build();
 </script>
 </body>
 </html>
