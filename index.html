@@ -97,10 +97,15 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
 .num b{display:block; font-size:28px; line-height:1.1}
 .num span{display:block; font-size:11.5px; line-height:1.25; margin-top:4px;
   color:#F7DCCF}
-.chips{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px}
-.chip{display:inline-block; background:var(--soft); border:1px solid var(--line);
-  border-radius:999px; padding:9px 15px; font-size:15px; line-height:1.25;
-  color:var(--ink)}
+.exp{list-style:none; counter-reset:e; margin:0 0 14px; padding:0}
+.exp li{counter-increment:e; display:flex; gap:12px; align-items:baseline;
+  padding:11px 0; border-bottom:1px solid var(--line)}
+.exp li:last-child{border-bottom:0}
+.exp li::before{content:"0" counter(e); color:var(--red); font-size:13px;
+  font-weight:600; flex:0 0 22px; letter-spacing:.02em}
+.exp b{display:block; font-size:16px; line-height:1.3; font-weight:600}
+.exp span{display:block; font-size:14px; line-height:1.35; color:var(--mid);
+  margin-top:2px}
 .hint{font-size:13px; color:var(--mid); margin:0}
 
 .top{display:flex; align-items:center; gap:16px; margin:0 0 20px}
@@ -154,15 +159,22 @@ footer{text-align:center; color:var(--mid); font-size:13px; margin-top:20px}
       <div class="num"><b>8</b><span>бизнесов и проектов</span></div>
       <div class="num"><b>8</b><span>ИИ-агентов в работе</span></div>
     </div>
-    <div class="chips">
-      <span class="chip">Две клиники пластической хирургии</span>
-      <span class="chip">Управленческий консалтинг</span>
-      <span class="chip">Бизнес-школа</span>
-      <span class="chip">Бизнес-сувениры</span>
-      <span class="chip">Цветы</span>
-      <span class="chip">Женский клуб</span>
-      <span class="chip">Личная коучинговая практика</span>
-    </div>
+    <ol class="exp">
+      <li><div><b>Две клиники пластической хирургии</b>
+        <span>выстроила операционное управление и собрала команду</span></div></li>
+      <li><div><b>Управленческий консалтинг</b>
+        <span>веду собственников и их руководителей</span></div></li>
+      <li><div><b>Бизнес-школа</b>
+        <span>запустила и вела программы для руководителей</span></div></li>
+      <li><div><b>Бизнес-сувениры</b>
+        <span>открыла производство и поставила продажи</span></div></li>
+      <li><div><b>Цветы</b>
+        <span>открыла с нуля и вывела в прибыль</span></div></li>
+      <li><div><b>Женский клуб</b>
+        <span>собрала сообщество и веду встречи</span></div></li>
+      <li><div><b>Личная коучинговая практика</b>
+        <span>работаю с первыми лицами до сих пор</span></div></li>
+    </ol>
     <p class="hint">Разные отрасли, разный масштаб, каждый раз с нуля.</p>
   </div>
 
